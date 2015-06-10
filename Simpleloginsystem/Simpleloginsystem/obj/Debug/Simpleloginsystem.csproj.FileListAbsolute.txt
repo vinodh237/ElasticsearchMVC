@@ -164,7 +164,7 @@ E:\vinod\Simpleloginsystem\Simpleloginsystem\bin\ko\System.Spatial.resources.dll
 E:\vinod\Simpleloginsystem\Simpleloginsystem\bin\ru\System.Spatial.resources.dll
 E:\vinod\Simpleloginsystem\Simpleloginsystem\bin\zh-Hans\System.Spatial.resources.dll
 E:\vinod\Simpleloginsystem\Simpleloginsystem\bin\zh-Hant\System.Spatial.resources.dll
-E:\vinod\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.csprojResolveAssemblyReference.cache
 E:\vinod\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.dll
 E:\vinod\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.pdb
 E:\vinod\Simpleloginsystem\Simpleloginsystem\bin\SimpleCrypto.dll
+E:\vinod\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.csprojResolveAssemblyReference.cache

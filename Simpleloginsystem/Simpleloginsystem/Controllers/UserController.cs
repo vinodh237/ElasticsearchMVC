@@ -22,10 +22,12 @@ namespace Simpleloginsystem.Controllers
             return View(db.Users.ToList());
         }
 
-      
+       [RedirectAuthenticatedRequests]
         public ActionResult Register()
         {
+            
             return View();
+            
         }
 
         //
@@ -58,6 +60,7 @@ namespace Simpleloginsystem.Controllers
         
         [HttpGet]
         //[Authorize(Roles = "NORMAL USER")]
+        [RedirectAuthenticatedRequests]
         public ActionResult Login()
         {
             return View();

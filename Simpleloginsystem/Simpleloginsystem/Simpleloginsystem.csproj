@@ -197,6 +197,7 @@
     <Compile Include="Models\UserContext.cs" />
     <Compile Include="MyRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedirectAuthenticatedRequests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Employee.mdf" />
