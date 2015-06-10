@@ -62,6 +62,12 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
+        public string DecryptedPassword
+        {
+            get;
+            set;
+        }
     }
 
     public class Login {
