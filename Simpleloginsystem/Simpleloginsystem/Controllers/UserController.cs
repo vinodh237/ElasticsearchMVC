@@ -47,6 +47,7 @@ namespace Simpleloginsystem.Controllers
                 newUser.Password = crypto.Salt;
                 newUser.EncryptedPassword = crypto.Salt;
                 newUser.EmployeeRole = "NORMAL USER";
+                newUser.DecryptedPassword = encrypPass;
                 db.Users.Add(newUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -96,8 +97,8 @@ namespace Simpleloginsystem.Controllers
             var user = db.Users.FirstOrDefault(u => u.EmailID == email);
             if (user != null)
             {
-                var encrypPass = crypto.Compute(password);
-                if (user.Password.Equals(crypto.Salt.ToString()))
+                
+                if (user.DecryptedPassword == crypto.Compute(password,user.EncryptedPassword))
                 {
                     isValid = true;
                 }
