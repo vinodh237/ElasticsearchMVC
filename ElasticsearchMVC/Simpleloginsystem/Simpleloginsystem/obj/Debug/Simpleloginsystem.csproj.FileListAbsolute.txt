@@ -254,3 +254,12 @@ C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simple
 C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.csprojResolveAssemblyReference.cache
 C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.dll
 C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.pdb
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Elasticsearch.Net.dll
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.dll
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.Watcher.dll
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Elasticsearch.Net.pdb
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Elasticsearch.Net.xml
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.pdb
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.xml
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.Watcher.pdb
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.Watcher.xml

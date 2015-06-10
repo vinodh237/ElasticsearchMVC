@@ -1,0 +1,1259 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nest.Watcher</name>
+    </assembly>
+    <members>
+        <member name="T:Nest.Dispatcher">
+            <summary>
+            Raw operations with elasticsearch
+            </summary>
+        </member>
+        <member name="F:Nest.ActionExecutionMode.Simulate">
+             <summary>
+            The action will be simulated (not actually executed) 
+             and it will be throttled if needed. 
+             </summary>
+        </member>
+        <member name="F:Nest.ActionExecutionMode.ForceSimulate">
+            <summary>
+            The action will be simulated (not actually executed) and it will 
+            not be throttled. 
+            </summary>
+        </member>
+        <member name="F:Nest.ActionExecutionMode.Execute">
+            <summary>
+            The action will be executed and it will be throttled if needed. 
+            </summary>
+        </member>
+        <member name="F:Nest.ActionExecutionMode.ForceExecute">
+            <summary>
+            The action will be executed and it will not be throttled. 
+            </summary>
+        </member>
+        <member name="F:Nest.ActionExecutionMode.Skip">
+            <summary>
+            The action will be skipped (it won't be executed nor simulated) 
+            - effectively it will be forcefully throttled 
+            </summary>
+        </member>
+        <member name="T:Nest.AcknowledgeWatchRequestParameters">
+            <summary>Request parameters descriptor for WatcherAckWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="M:Nest.AcknowledgeWatchRequestParameters.MasterTimeout(System.String)">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="T:Nest.DeleteWatchRequestParameters">
+            <summary>Request parameters descriptor for WatcherDeleteWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="M:Nest.DeleteWatchRequestParameters.MasterTimeout(System.String)">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="M:Nest.DeleteWatchRequestParameters.Force(System.Boolean)">
+            <summary>Specify if this request should be forced and ignore locks</summary>
+        </member>
+        <member name="T:Nest.ExecuteWatchRequestParameters">
+            <summary>Request parameters descriptor for WatcherExecuteWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.GetWatchRequestParameters">
+            <summary>Request parameters descriptor for WatcherGetWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherInfoRequestParameters">
+            <summary>Request parameters descriptor for WatcherInfo
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.PutWatchRequestParameters">
+            <summary>Request parameters descriptor for WatcherPutWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="M:Nest.PutWatchRequestParameters.MasterTimeout(System.String)">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="T:Nest.RestartWatcherRequestParameters">
+            <summary>Request parameters descriptor for WatcherRestart
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.StartWatcherRequestParameters">
+            <summary>Request parameters descriptor for WatcherStart
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherStatsRequestParameters">
+            <summary>Request parameters descriptor for WatcherStats
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.StopWatcherRequestParameters">
+            <summary>Request parameters descriptor for WatcherStop
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.AcknowledgeWatchRequest">
+            <summary>Request parameters for WatcherAckWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="P:Nest.AcknowledgeWatchRequest.MasterTimeout">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="T:Nest.AcknowledgeWatchDescriptor">
+            <summary>descriptor for WatcherAckWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="M:Nest.AcknowledgeWatchDescriptor.MasterTimeout(System.String)">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="T:Nest.DeleteWatchRequest">
+            <summary>Request parameters for WatcherDeleteWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="P:Nest.DeleteWatchRequest.MasterTimeout">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="P:Nest.DeleteWatchRequest.Force">
+            <summary>Specify if this request should be forced and ignore locks</summary>
+        </member>
+        <member name="T:Nest.DeleteWatchDescriptor">
+            <summary>descriptor for WatcherDeleteWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="M:Nest.DeleteWatchDescriptor.MasterTimeout(System.String)">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="M:Nest.DeleteWatchDescriptor.Force(System.Boolean)">
+            <summary>Specify if this request should be forced and ignore locks</summary>
+        </member>
+        <member name="T:Nest.StopWatcherRequest">
+            <summary>Request parameters for WatcherStop
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.StopWatcherDescriptor">
+            <summary>descriptor for WatcherStop
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.StartWatcherRequest">
+            <summary>Request parameters for WatcherStart
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.StartWatcherDescriptor">
+            <summary>descriptor for WatcherStart
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.RestartWatcherRequest">
+            <summary>Request parameters for WatcherRestart
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.RestartWatcherDescriptor">
+            <summary>descriptor for WatcherRestart
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.PutWatchRequest">
+            <summary>Request parameters for WatcherPutWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="P:Nest.PutWatchRequest.MasterTimeout">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="T:Nest.PutWatchDescriptor">
+            <summary>descriptor for WatcherPutWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="M:Nest.PutWatchDescriptor.MasterTimeout(System.String)">
+            <summary>Specify timeout for watch write operation</summary>
+        </member>
+        <member name="T:Nest.GetWatchRequest">
+            <summary>Request parameters for WatcherGetWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.GetWatchDescriptor">
+            <summary>descriptor for WatcherGetWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="P:Nest.IExecuteWatchRequest.TriggerEvent">
+            <summary>
+            This structure will be parsed as a trigger event and used for the watch execution.
+            </summary>
+        </member>
+        <member name="P:Nest.IExecuteWatchRequest.IgnoreCondition">
+            <summary>
+            If this is set to true the watch execution will use the Always Condition.
+            </summary>
+        </member>
+        <member name="P:Nest.IExecuteWatchRequest.RecordExecution">
+            <summary>
+            If this is set to true the WatchRecord generated by executing the watch will be persisted 
+            to the .watch_history index for the current time. 
+            Also the Watch.Status will be updated, possbily throttling subsequent executions.
+            </summary>
+        </member>
+        <member name="P:Nest.IExecuteWatchRequest.IgnoreThrottle">
+            <summary>
+            If this is set to true the watch execution will ignore throttling. 
+            </summary>
+        </member>
+        <member name="P:Nest.IExecuteWatchRequest.AlternativeInput">
+            <summary>
+            If this structure is present, the watch will not execute it’s own input but 
+            will use these fields as a payload instead. 
+            </summary>
+        </member>
+        <member name="P:Nest.IExecuteWatchRequest.SimulatedActions">
+             <summary>
+            This field can either be a list of action ids or the string _all. 
+             If _all is set or an action that is executed by the watch appears in this list 
+             it will be executed in simulated mode. 
+             </summary>
+        </member>
+        <member name="T:Nest.ExecuteWatchRequest">
+            <summary>Request parameters for WatcherExecuteWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.ExecuteWatchDescriptor">
+            <summary>descriptor for WatcherExecuteWatch
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherInfoRequest">
+            <summary>Request parameters for WatcherInfo
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherInfoDescriptor">
+            <summary>descriptor for WatcherInfo
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherStatsRequest">
+            <summary>Request parameters for WatcherStats
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherStatsDescriptor">
+            <summary>descriptor for WatcherStats
+            <pre>
+            http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html
+            </pre>
+            </summary>
+        </member>
+        <member name="T:Nest.WatcherClientExtensions">
+            <summary>
+            Raw operations with elasticsearch
+            </summary>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatch``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_ack
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatchAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_ack
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatch(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_ack
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatchAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_ack
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatchPost``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_ack
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatchPostAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_ack
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatchPost(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_ack
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherAckWatchPostAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.AcknowledgeWatchRequestParameters,Nest.AcknowledgeWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_ack
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-ack-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherDeleteWatch``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.DeleteWatchRequestParameters,Nest.DeleteWatchRequestParameters})">
+            <summary>Represents a DELETE on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherDeleteWatchAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.DeleteWatchRequestParameters,Nest.DeleteWatchRequestParameters})">
+            <summary>Represents a DELETE on /_watcher/watch/{id}
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherDeleteWatch(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.DeleteWatchRequestParameters,Nest.DeleteWatchRequestParameters})">
+            <summary>Represents a DELETE on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherDeleteWatchAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.DeleteWatchRequestParameters,Nest.DeleteWatchRequestParameters})">
+            <summary>Represents a DELETE on /_watcher/watch/{id}
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-delete-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatch``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_execute
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatchAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_execute
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatch(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_execute
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatchAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}/_execute
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatchPost``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_execute
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatchPostAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_execute
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatchPost(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_execute
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherExecuteWatchPostAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.ExecuteWatchRequestParameters,Nest.ExecuteWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}/_execute
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-execute-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">Execution control</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherGetWatch``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.GetWatchRequestParameters,Nest.GetWatchRequestParameters})">
+            <summary>Represents a GET on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherGetWatchAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.GetWatchRequestParameters,Nest.GetWatchRequestParameters})">
+            <summary>Represents a GET on /_watcher/watch/{id}
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherGetWatch(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.GetWatchRequestParameters,Nest.GetWatchRequestParameters})">
+            <summary>Represents a GET on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherGetWatchAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Func{Nest.GetWatchRequestParameters,Nest.GetWatchRequestParameters})">
+            <summary>Represents a GET on /_watcher/watch/{id}
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-get-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherInfo``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherInfoRequestParameters,Nest.WatcherInfoRequestParameters})">
+            <summary>Represents a GET on /_watcher/
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherInfoAsync``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherInfoRequestParameters,Nest.WatcherInfoRequestParameters})">
+            <summary>Represents a GET on /_watcher/
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherInfo(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherInfoRequestParameters,Nest.WatcherInfoRequestParameters})">
+            <summary>Represents a GET on /_watcher/
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherInfoAsync(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherInfoRequestParameters,Nest.WatcherInfoRequestParameters})">
+            <summary>Represents a GET on /_watcher/
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-info.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatch``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatchAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatch(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatchAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a PUT on /_watcher/watch/{id}
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatchPost``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatchPostAsync``1(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatchPost(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherPutWatchPostAsync(Elasticsearch.Net.IElasticsearchClient,System.String,System.Object,System.Func{Nest.PutWatchRequestParameters,Nest.PutWatchRequestParameters})">
+            <summary>Represents a POST on /_watcher/watch/{id}
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-put-watch.html</para>	
+            </summary>
+            <param name="id">Watch ID</param>
+            <param name="body">The watch</param>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherRestart``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.RestartWatcherRequestParameters,Nest.RestartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_restart
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherRestartAsync``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.RestartWatcherRequestParameters,Nest.RestartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_restart
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherRestart(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.RestartWatcherRequestParameters,Nest.RestartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_restart
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherRestartAsync(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.RestartWatcherRequestParameters,Nest.RestartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_restart
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStart``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StartWatcherRequestParameters,Nest.StartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_start
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStartAsync``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StartWatcherRequestParameters,Nest.StartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_start
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStart(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StartWatcherRequestParameters,Nest.StartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_start
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStartAsync(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StartWatcherRequestParameters,Nest.StartWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_start
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStats``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherStatsRequestParameters,Nest.WatcherStatsRequestParameters})">
+            <summary>Represents a GET on /_watcher/stats
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStatsAsync``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherStatsRequestParameters,Nest.WatcherStatsRequestParameters})">
+            <summary>Represents a GET on /_watcher/stats
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStats(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherStatsRequestParameters,Nest.WatcherStatsRequestParameters})">
+            <summary>Represents a GET on /_watcher/stats
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStatsAsync(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.WatcherStatsRequestParameters,Nest.WatcherStatsRequestParameters})">
+            <summary>Represents a GET on /_watcher/stats
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-stats.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStop``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StopWatcherRequestParameters,Nest.StopWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_stop
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStopAsync``1(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StopWatcherRequestParameters,Nest.StopWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_stop
+            <para></para>Returns: A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>A task that'll return an ElasticsearchResponse&lt;T&gt; holding the reponse body deserialized as T.
+            <para> - If T is of type byte[] deserialization will be shortcircuited</para>
+            <para> - If T is of type VoidResponse the response stream will be ignored completely</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStop(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StopWatcherRequestParameters,Nest.StopWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_stop
+            <para></para>Returns: ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>ElasticsearchResponse&lt;T&gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+        <member name="M:Nest.WatcherClientExtensions.WatcherStopAsync(Elasticsearch.Net.IElasticsearchClient,System.Func{Nest.StopWatcherRequestParameters,Nest.StopWatcherRequestParameters})">
+            <summary>Represents a PUT on /_watcher/_stop
+            <para></para>Returns: Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            <para>See also: http://www.elastic.co/guide/en/watcher/current/appendix-api-service.html</para>	
+            </summary>
+            <param name="requestParameters">
+            Optional function to specify any additional request parameters 
+            <para>Querystring values, connection configuration specific to this request, deserialization state.</para>
+            </param>
+            <returns>Task that'll return an ElasticsearchResponse&lt;T$gt; holding the response body deserialized as DynamicDictionary
+            <para> - Dynamic dictionary is a special dynamic type that allows json to be traversed safely</para>
+            <para> - i.e result.Response.hits.hits[0].property.nested["nested_deeper"]</para>
+            <para> - can be safely dispatched to a nullable type even if intermediate properties do not exist</para>
+            </returns>
+        </member>
+    </members>
+</doc>

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Simpleloginsystem.Models;
 using System.Web.Security;
+using Nest;
 
 namespace Simpleloginsystem.Controllers
 {
@@ -92,6 +93,24 @@ namespace Simpleloginsystem.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult ReIndex()
+        {
+            var node = new Uri("http://localhost:9200");
+
+            var settings = new ConnectionSettings(
+                node,
+                defaultIndex: "my-application"
+            );
+
+            var client = new ElasticClient(settings);
+            foreach (var album in db.Users)
+            {
+                client.Index(album);
+            }
+            return RedirectToAction("Index");
+        }
+         
 
         private bool IsValid(string email, string password)
         {
