@@ -20,7 +20,7 @@ namespace Simpleloginsystem.Controllers
        
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.Register.ToList());
         }
 
        [RedirectAuthenticatedRequests]
@@ -35,28 +35,24 @@ namespace Simpleloginsystem.Controllers
         // POST: /User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(User user)
+        public ActionResult Register(Register user)
         {
             if (ModelState.IsValid)
             {
                 var crypto = new SimpleCrypto.PBKDF2();
-
                 var encrypPass = crypto.Compute(user.Password);
-
-                var newUser = db.Users.Create();
+                var newUser = db.Register.Create();
                 newUser.EmailID = user.EmailID;
-                newUser.EmployeeName = user.EmployeeName;
-                
+                newUser.UserName = user.UserName;
                 newUser.Password = crypto.Salt;
                 newUser.EncryptedPassword = crypto.Salt;
-                newUser.EmployeeRole = "NORMAL USER";
+                newUser.UserRole = "NORMAL USER";
                 newUser.DecryptedPassword = encrypPass;
-                db.Users.Add(newUser);
+                db.Register.Add(newUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(user);
-
         }
         
         [HttpGet]
@@ -104,7 +100,7 @@ namespace Simpleloginsystem.Controllers
             );
 
             var client = new ElasticClient(settings);
-            foreach (var album in db.Users)
+            foreach (var album in db.Register)
             {
                 client.Index(album);
             }
@@ -116,7 +112,7 @@ namespace Simpleloginsystem.Controllers
         {
             bool isValid = false;
             var crypto = new SimpleCrypto.PBKDF2();
-            var user = db.Users.FirstOrDefault(u => u.EmailID == email);
+            var user = db.Register.FirstOrDefault(u => u.EmailID == email);
             if (user != null)
             {
                 
@@ -128,9 +124,9 @@ namespace Simpleloginsystem.Controllers
             return isValid;
         }
 
-        public JsonResult doesEmailExist(User email)
+        public JsonResult doesEmailExist(Register email)
         {
-            var user = db.Users.FirstOrDefault(u => u.EmailID == email.EmailID);
+            var user = db.Register.FirstOrDefault(u => u.EmailID == email.EmailID);
             return Json(user == null, JsonRequestBehavior.AllowGet);
         }
     }

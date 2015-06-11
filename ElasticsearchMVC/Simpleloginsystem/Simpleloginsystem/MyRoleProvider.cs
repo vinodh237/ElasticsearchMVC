@@ -50,7 +50,7 @@ namespace Simpleloginsystem
         public override string[] GetRolesForUser(string username)
         {
             UserContext db = new UserContext();
-            string s = db.Users.Where(x => x.EmailID == username).FirstOrDefault().EmployeeRole;
+            string s = db.Register.Where(x => x.EmailID == username).FirstOrDefault().UserRole;
             string[] results = { s };
             return results;
         }

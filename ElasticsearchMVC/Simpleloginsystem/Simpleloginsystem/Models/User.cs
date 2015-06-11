@@ -7,19 +7,19 @@ using System.Web;
 
 namespace Simpleloginsystem.Models
 {
-    [Table("tblEmployee")]
-    public class User
+    [Table("tblUser")]
+    public class Register
     {
 
         [Key]
-        public int EmployeeID
+        public int UserID
         {
             get;
             set;
         }
-        [Required(ErrorMessage = "Employee Name is required")]
-        [Display(Name = "Employee Name")]
-        public string EmployeeName
+        [Required(ErrorMessage = "User Name is required")]
+        [Display(Name = "User Name")]
+        public string UserName
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
-        public string EmployeeRole
+        public string UserRole
         {
             get;
             set;
@@ -72,14 +72,13 @@ namespace Simpleloginsystem.Models
 
     public class Login {
         [Key]
-        public int EmployeeID
+        public int UserID
         {
             get;
             set;
         }
 
         [Required(ErrorMessage = "Email ID is required")]
-
         [EmailAddress]
         [Display(Name = "Email address")]
         [StringLength(150)]
@@ -88,12 +87,10 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
         [Required(ErrorMessage = "Password is required")]
-
         [DataType(DataType.Password)]
-
         [StringLength(150, MinimumLength = 6)]
-
         [Display(Name = "Password")]
         public string Password
         {

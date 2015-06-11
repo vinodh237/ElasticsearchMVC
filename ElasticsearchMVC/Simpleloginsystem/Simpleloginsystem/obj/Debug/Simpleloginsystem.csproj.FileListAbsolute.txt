@@ -263,3 +263,4 @@ C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simple
 C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.xml
 C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.Watcher.pdb
 C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Nest.Watcher.xml
+C:\Users\Kuliza-AnkitB\Documents\GitHub\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\Simpleloginsystem.dll.CodeAnalysisLog.xml

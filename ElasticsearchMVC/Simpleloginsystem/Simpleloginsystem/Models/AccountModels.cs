@@ -17,7 +17,7 @@ namespace Simpleloginsystem.Models
 
         public DbSet<UserProfile> UserProfiles { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Register> Users { get; set; }
     }
 
     [Table("UserProfile")]

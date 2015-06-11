@@ -1,4 +1,4 @@
-﻿@model Simpleloginsystem.Models.User
+﻿@model Simpleloginsystem.Models.Register
 
 @{
     ViewBag.Title = "Register";
@@ -14,11 +14,11 @@
         <legend>User</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.EmployeeName)
+            @Html.LabelFor(model => model.UserName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.EmployeeName)
-            @Html.ValidationMessageFor(model => model.EmployeeName)
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
         </div>
 
         <div class="editor-label">

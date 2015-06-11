@@ -8,8 +8,8 @@ namespace Simpleloginsystem.Models
 {
     public class UserContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Login> User { get; set; }
+        public DbSet<Register> Register { get; set; }
+        public DbSet<Login> login { get; set; }
 
     }
 }
