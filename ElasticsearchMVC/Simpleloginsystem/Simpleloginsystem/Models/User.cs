@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nest;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,6 +30,8 @@ namespace Simpleloginsystem.Models
         [EmailAddress]
         [Display(Name = "Email address")]
         [StringLength(150)]
+        [ElasticProperty(OmitNorms = true, Index = FieldIndexOption.NotAnalyzed)]
+
         public string EmailID
         {
             get;
@@ -97,5 +100,32 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+    }
+
+    public class ChangeRole
+    {
+
+        [Key]
+        public int UserID
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = "User Name is required")]
+        [Display(Name = "User Name")]
+        public string UserName
+        {
+            get;
+            set;
+        }
+     
+    
+        public string UserRole
+        {
+            get;
+            set;
+        }
+
+      
     }
 }

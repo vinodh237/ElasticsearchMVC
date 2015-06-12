@@ -11,5 +11,6 @@ namespace Simpleloginsystem.Models
         public DbSet<Register> Register { get; set; }
         public DbSet<Login> login { get; set; }
 
+        public DbSet<ChangeRole> ChangeRole { get; set; }
     }
 }

@@ -89,24 +89,112 @@ namespace Simpleloginsystem.Controllers
             return RedirectToAction("Index");
         }
 
-
+      //  [Authorize(Roles = "Admin")]
         public ActionResult ReIndex()
         {
             var node = new Uri("http://localhost:9200");
 
             var settings = new ConnectionSettings(
-                node,
-                defaultIndex: "my-application"
+                node
+                
             );
 
             var client = new ElasticClient(settings);
-            foreach (var album in db.Register)
+
+
+            //client.CreateIndex("my-app");
+            //client.Map<Register>(c => c.MapFromAttributes());
+            foreach (var user in db.Register)
             {
-                client.Index(album);
+                //client.Index(user);
+                client.Index(user, i => i
+    .Index("my-app")
+    .Type("register")
+    .Id(user.UserID)
+);
+
             }
             return RedirectToAction("Index");
         }
-         
+
+//        private static ElasticClient ElasticClient
+//{
+//    get
+//    {
+        
+       
+//        var node = new Uri("http://localhost:9200");
+//          var settings = new ConnectionSettings(
+//                node,
+//                defaultIndex: "my-application"
+//            );
+
+//            return new ElasticClient(settings);
+//    }
+//}
+        public ActionResult Search(string searchString)
+        {
+
+            var node = new Uri("http://localhost:9200");
+
+            var settings = new ConnectionSettings(
+                node,
+                defaultIndex: "my-app"
+            );
+
+            var client = new ElasticClient(settings);
+            var result = client.Search<Register>(body =>
+                body.Query(query =>
+                query.QueryString(qs => qs.Query(searchString))));
+            // List<Register> register = new List<Register>();
+            //register.Add(result.Documents.ToList());
+            // re
+            //{
+            //   //EmailID = q,
+            //   //DecryptedPassword = q,
+            //   //EncryptedPassword = q,
+            //   //Password =q,
+            //   //UserName =       q,
+            //   //UserRole = "Normal User",
+            //   return result.Documents.ToList();
+
+
+            //    //Name = "Search results for " + q,
+            //    //Albums = result.Documents.ToList()
+            //};
+
+            List<Register> viewModelList = new List<Register>((result.Documents.ToList()));
+            
+            Console.WriteLine("Queried");
+            return View("Index", viewModelList);
+        }
+
+        public ActionResult Edit(int id = 0)
+        {
+            Register register = db.Register.Find(id);
+            if (register == null)
+            {
+                return HttpNotFound();
+            }
+            return View(register);
+        }
+
+        //
+        // POST: /Fake/Edit/5
+
+        [HttpPost]
+        public ActionResult Edit(Register register)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(register).State = EntityState.Modified;
+              
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View( register);
+        }
+
 
         private bool IsValid(string email, string password)
         {

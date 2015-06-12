@@ -1,0 +1,75 @@
+﻿@model Simpleloginsystem.Models.Register
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+   
+    <fieldset>
+        <legend>Register</legend>
+
+        @Html.HiddenFor(model => model.UserID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailID)
+            @Html.ValidationMessageFor(model => model.EmailID)
+             
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EncryptedPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EncryptedPassword)
+            @Html.ValidationMessageFor(model => model.EncryptedPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserRole)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserRole)
+            @Html.ValidationMessageFor(model => model.UserRole)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DecryptedPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DecryptedPassword)
+            @Html.ValidationMessageFor(model => model.DecryptedPassword)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
