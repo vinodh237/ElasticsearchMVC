@@ -505,7 +505,6 @@ namespace Simpleloginsystem.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(register).State = EntityState.Modified;
-              
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

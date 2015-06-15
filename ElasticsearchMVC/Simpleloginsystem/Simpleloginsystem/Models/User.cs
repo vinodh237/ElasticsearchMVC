@@ -11,13 +11,13 @@ namespace Simpleloginsystem.Models
     [Table("tblUser")]
     public class Register
     {
-
         [Key]
         public int UserID
         {
             get;
             set;
         }
+
         [Required(ErrorMessage = "User Name is required")]
         [Display(Name = "User Name")]
         public string UserName
@@ -25,6 +25,7 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
         [Required(ErrorMessage = "Email ID is required")]
         [System.Web.Mvc.Remote("doesEmailExistRegister", "User", ErrorMessage = "EmailId already exists. Please enter a different EmailID.")]
         [EmailAddress]
@@ -36,6 +37,7 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         [StringLength(150, MinimumLength = 6)]
@@ -56,6 +58,7 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
         public string UserRole
         {
             get;
@@ -67,9 +70,9 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
         public int RecentPasswordReset
         {
-
             get;
             set;
         }
@@ -89,6 +92,7 @@ namespace Simpleloginsystem.Models
             get;
             set;
         }
+
         [EmailAddress]
         [Required(ErrorMessage = "Email ID is required")]
         [System.Web.Mvc.Remote("doesEmailExist", "User", ErrorMessage = "EmailId not exists. Please enter a different EmailID.")]
@@ -114,7 +118,6 @@ namespace Simpleloginsystem.Models
 
     public class ForgotPassword
     {
-
         [Key]
         public int UserID
         {
@@ -135,13 +138,13 @@ namespace Simpleloginsystem.Models
     }
     public class ChangeRole
     {
-
         [Key]
         public int UserID
         {
             get;
             set;
         }
+
         [Required(ErrorMessage = "User Name is required")]
         [Display(Name = "User Name")]
         public string UserName
@@ -150,7 +153,6 @@ namespace Simpleloginsystem.Models
             set;
         }
      
-    
         public string UserRole
         {
             get;
@@ -160,7 +162,6 @@ namespace Simpleloginsystem.Models
 
     public class ChangePassword
     {
-
         [Key]
         public int UserID
         {

@@ -358,3 +358,4 @@ C:\Users\Kuliza-AnkitB\Documents\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsy
 C:\Users\Kuliza-AnkitB\Documents\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Kuliza-AnkitB\Documents\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.dll
 C:\Users\Kuliza-AnkitB\Documents\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.pdb
+C:\Users\Kuliza-AnkitB\Documents\ElasticsearchMVC\ElasticsearchMVC\Simpleloginsystem\Simpleloginsystem\obj\Debug\Simpleloginsystem.csprojResolveAssemblyReference.cache
