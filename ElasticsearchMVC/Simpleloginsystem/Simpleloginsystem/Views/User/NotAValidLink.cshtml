@@ -1,0 +1,18 @@
+﻿@model Simpleloginsystem.Models.UserContext
+
+@{
+    ViewBag.Title = "NotAValidLink";
+}
+
+<h2>NotAValidLink</h2>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <div class="editor-label">
+         @ViewBag.Message;
+           <div>
+            @Html.ActionLink("Resend Link", "RequestResetPasswordLink");
+            </div>
+        </div>
+    
+}

@@ -10,7 +10,7 @@ namespace Simpleloginsystem.Models
     {
         public DbSet<Register> Register { get; set; }
         public DbSet<Login> login { get; set; }
-
-        public DbSet<ChangeRole> ChangeRole { get; set; }
+        public DbSet<ForgotPassword> forgot { get; set; }
+        public DbSet<ChangePassword> ChangeRole { get; set; }
     }
 }
